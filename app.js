@@ -12,10 +12,13 @@ function LucnhChecker($scope, $filter) {
   
   $scope.CheckLunchList = function () {
     var LunchList = $scope.InpLunchList.split(',');
-    //console.log(LunchList.filter(String).length);
+      for(var i=0; i<LunchList.length;i++){
+          LunchList[i] = LunchList[i].trim();
+      }
+    console.log(LunchList.filter(String).length);
     var ItemCount = LunchList.filter(String).length;
-      //console.log(LunchList)
-      //console.log(ItemCount)
+      console.log(LunchList)
+      console.log(ItemCount)
       $scope.Message = "";
       if(ItemCount==0){
           $scope.Message = "Please enter data first"
