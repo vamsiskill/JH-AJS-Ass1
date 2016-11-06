@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+      .note { font-size: 0.75em; font-style: italic; }
+      .green { color: green; }
+      .red { color: red; }
+      .borderG{ border: solid 1px green; }
+      .borderR{ border: solid 1px red; }
+      .borderGrey{ border: solid 1px lightgrey; }      
+   </style>
+  </head>
+<body ng-app = 'LunchCheck'>
+    
+   <div class="container" ng-controller='LucnhChecker'>
+     <h1>Lunch Checker</h1>
+
+         <div class="form-group">
+             <input id="lunch-menu" type="text"
+             placeholder="list comma separated dishes you usually have for lunch"
+             class="form-control" ng-model="InpLunchList" ng-class="{borderR: Message == 'Please enter data first', borderG: Message == 'Enjoy!' || 'Too Much!', borderGrey: Message == ''}">
+            <p class="note">Note: Empty item, i.e., `, ,` is not counted as an item towards the count</p>
+         </div>
+         <div class="form-group">
+             <button class="btn btn-default" ng-click = "CheckLunchList()">Check If Too Much</button>
+         </div>
+         <div class="form-group message">
+           <span ng-class="{red: Message == 'Please enter data first', green: Message == 'Enjoy!' || 'Too Much!'}">{{Message}}</span>
+         </div>
+   </div>
+
+</body>
+</html>
